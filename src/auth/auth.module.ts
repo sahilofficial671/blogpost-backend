@@ -1,7 +1,11 @@
 import { Module } from '@nestjs/common';
-import { GoogleController } from './google/google.controller';
+import { CommonModule } from 'src/common/common.module';
+import { ProfileController } from './profile/profile.controller';
+import { LoginController } from './login/login.controller';
 
 @Module({
-  controllers: [GoogleController]
+  imports: [CommonModule],
+  controllers: [LoginController, ProfileController],
+  providers: [],
 })
 export class AuthModule {}
