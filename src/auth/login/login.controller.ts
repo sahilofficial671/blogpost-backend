@@ -12,17 +12,18 @@ export class LoginController {
   async login(@Req() req: Request){
     console.log("Body Recieved for Authentication ==> ", req.body);
     
-    const token = await this.authService.login(req.body.user);
+    const response = await this.authService.login(req.body.user);
     
-    if (token != null && token['accessToken']) {
+    if (response != null && response['user'] && response['accessToken']) {
       return {
-        status: 'succcess',
-        accessToken: token['accessToken'],
+        status: 'success',
+        ...response
       }
     }
 
     return {
       status: 'error',
+      message: response?.message || 'Something went wrong!',
       accessToken: null,
     }
   }
