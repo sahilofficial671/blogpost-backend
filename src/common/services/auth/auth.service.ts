@@ -1,11 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { JwtService } from '@nestjs/jwt';
-import { catchError, firstValueFrom } from 'rxjs';
-import { AxiosError } from 'axios';
 import { User, UserDocument } from 'src/common/models/user.model';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model, ObjectId } from 'mongoose';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class AuthService {
@@ -22,7 +20,7 @@ export class AuthService {
       const {data} = response;
 
       console.log("Response ===> ", data);
-  
+
       if(data.sub){
         let user = await this.userModel.findOneAndUpdate({
           email: data.email
@@ -33,11 +31,15 @@ export class AuthService {
           fields: ['_id', 'email', 'name'],
         }).exec();
   
+        let newUserCreated = false;
+
         if(! user){
           user = await this.userModel.create({
             email: data.email,
             name: data.name
           });
+
+          newUserCreated = true;
         }
 
         console.log('User: ', user);
@@ -47,6 +49,7 @@ export class AuthService {
 
         return {
           user,
+          newUserCreated,
           accessToken
         };
       }
@@ -57,11 +60,5 @@ export class AuthService {
     }
 
     return null;
-  }
-
-  async getUserById(userId: any){
-    return await this.userModel.findById(userId, {}, {
-      fields: ['_id', 'name', 'email']
-    }).exec();
   }
 }
