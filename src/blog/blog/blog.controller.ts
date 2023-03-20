@@ -14,8 +14,13 @@ export class BlogController {
     return await this.blogService.createBlog(req.body, req.user['userId']);
   }
 
+  @Get(':id')
+  getBlog(@Req() req){
+    const blog = this.blogService.getBlog(req.params.id);
+    return blog ? blog : {message: 'Not found'};
+  }
+
   @Get()
-  @UseGuards(JwtGuard)
   getBlogs(@Req() req){
     return this.blogService.getBlogs();
   }

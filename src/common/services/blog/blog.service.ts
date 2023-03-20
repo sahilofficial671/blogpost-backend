@@ -28,8 +28,14 @@ export class BlogService {
     });
   }
 
-  getBlogs() {
-    return this.blogModel
+  async getBlog(blogId: ObjectId) {
+    return await this.blogModel
+      .findById(blogId)
+      .populate('user');
+  }
+
+  async getBlogs() {
+    return await this.blogModel
       .find({})
       .populate('user', '_id, name')
       .sort([['updatedAt', 'desc']])

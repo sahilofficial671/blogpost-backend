@@ -4,6 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import { User, UserDocument } from 'src/common/models/user.model';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class AuthService {
