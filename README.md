@@ -1,26 +1,98 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Blogpost Backend
+This is blogpost's project backend. It handle blog and users.
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Built with
+- NestJS
+- PassportJS
+- Mongoose
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## API
+- [Authentication](#authentication)
+  - [Login](#login)
+  - [Profile](#profile)
+- [Blogs](#blogs)
+  - [Create a Blog](#create-a-blog)
+  - [Get all Blogs](#get-all-blogs)
+  - [Get a Blogs](#get-a-blog)
+  - [Delete a Blog](#delete-a-blog)
+
+## Authentication
+### Login
+    - Method: POST
+    - URL: /auth/login
+    - Request Data:  ``{"idToken": "your google id token"}``
+    - Return: User model
+    
+### Profile
+    - Method: GET
+    - URL: /auth/profile
+    - Headers: Authorization (Bearer Token)
+    - Return: User model
+    
+## Blogs
+### Create a Blog
+    - Method: POST
+    - URL: /blog
+    - Headers: Authorization (Bearer Token)
+    - Body:
+    `{
+      "title": "Sample Blog" // Title of the blog.
+      "description": "Sample Blog Description" // Descrition of the blog,
+    }`
+    - Return: Blog
+    `[
+      {
+        "_id" // Blog ID,
+        "title": // Title of the blog,
+        "description" // Descrition of the blog,
+        "user" // User who created this blog
+        "createdAt" // Blog's Created At,
+        "updatedAt" // Blog's Updated At
+      }
+    ]`
+### Get All Blogs
+    - Method: GET
+    - URL: /blog
+    - Return: Blog[]
+    `[
+      {
+        "_id" // Blog ID,
+        "title": // Title of the blog,
+        "description" // Descrition of the blog,
+        "user" // User who created this blog
+        "createdAt" // Blog's Created At,
+        "updatedAt" // Blog's Updated At
+      }
+    ]`
+### Get a Blog
+    - Method: GET
+    - URL: /blog/:blogId
+    - Return: Blog
+    `{
+      "_id" // Blog ID,
+      "title": // Title of the blog,
+      "description" // Descrition of the blog,
+      "user" // User who created this blog
+      "createdAt" // Blog's Created At,
+      "updatedAt" // Blog's Updated At
+    }`
+### Delete a Blog
+    - Method: Delete
+    - URL: /blog/:blogId
+    - Headers: Authorization (Bearer Token)
+    - Return: Blog
+    `{
+      "status": "Success",
+      "message": "Deleted"
+    }`
+    
+    
+## Admin
+##### Admin Login
+    - **Method**: POST
+    - **URL**: admin/login
+    - **Request Data**:  ```{"email": "your@email.id", "password": "your_password"}```
+    - **Return**: User model
 
 ## Description
 
