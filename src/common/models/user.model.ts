@@ -9,11 +9,6 @@ export type UserDocument = HydratedDocument<User>;
   versionKey: false,
 })
 export class User {
-  @Prop({
-    type: SchemaTypes.ObjectId
-  })
-  _id: Number;
-  
   @Prop()
   name: string;
   

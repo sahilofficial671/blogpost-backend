@@ -32,7 +32,7 @@ export class BlogController {
   async deleteBlog(@Req() req, @Res() res: Response){
     const blog = await this.blogService.getBlog(req.params.blogId);
     
-    if(blog?.user._id == req.user['userId']){
+    if(blog?.user['id'] == req.user['userId']){
       const response = await this.blogService.deleteBlog(req.params.blogId);
 
       return res.status(response['deletedCount'] == 1 ? HttpStatusCode.Ok : HttpStatusCode.InternalServerError)
