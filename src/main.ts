@@ -7,8 +7,10 @@ import * as cors from 'cors';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   
-  app.use([morgan('dev'), cors()])
-  // app.enableCors();
+  app.use([
+    morgan('dev'),
+    cors()
+  ]);
 
   await app.listen(process.env.APP_PORT);
 }
