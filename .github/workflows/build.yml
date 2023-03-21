@@ -28,4 +28,6 @@ jobs:
             cd /var/www/blogpost-backend/
             git checkout -f
             git pull origin main
+            pm2 stop blogpost-backend
             npm run build
+            pm2 start blogpost-backend
