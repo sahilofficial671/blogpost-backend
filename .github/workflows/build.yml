@@ -30,4 +30,5 @@ jobs:
             git pull origin main
             pm2 stop blogpost-backend
             npm run build
-            pm2 start blogpost-backend
+            pm2 start dist/main.js --name blogpost-backend
+            pm2 save
