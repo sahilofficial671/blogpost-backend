@@ -41,4 +41,10 @@ export class BlogService {
       .sort([['updatedAt', 'desc']])
       .limit(7);
   }
+
+  async deleteBlog(blogId) {
+    return await this.blogModel.deleteOne({
+      '_id': blogId
+    });
+  }
 }

@@ -13,6 +13,6 @@ export class UserService {
     return await this.userModel
       .findById(userId, {}, {
         fields: ['_id', 'name', 'email']
-      }).populate('blogs', '_id');
+      }).populate('blogs', 'title createdAt');
   }
 }
