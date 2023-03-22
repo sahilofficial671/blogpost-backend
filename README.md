@@ -87,14 +87,6 @@ This is blogpost's project backend. It handle blog and users.
       "status": "Success",
       "message": "Deleted"
     }`
-    
-    
-## Admin
-##### Admin Login
-    - **Method**: POST
-    - **URL**: admin/login
-    - **Request Data**:  ```{"email": "your@email.id", "password": "your_password"}```
-    - **Return**: User model
 
 ## Description
 
