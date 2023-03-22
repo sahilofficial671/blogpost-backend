@@ -1,7 +1,10 @@
 # Blogpost Backend
+![Github](https://github.com/sahilofficial671/blogpost-backend/actions/workflows/build.yml/badge.svg)
 This is blogpost's project backend. It handle blog and users.
 
-#### Deployed At: https://blogpost-backend.webiggle.com/
+#### Deployment
+##### Deployed On: AWS via Github Actions
+##### Deployed At: https://blogpost-backend.webiggle.com/
 
 ## Built with
 - NestJS
