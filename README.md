@@ -1,7 +1,7 @@
 # Blogpost Backend
 ![Github](https://github.com/sahilofficial671/blogpost-backend/actions/workflows/build.yml/badge.svg)
 
-This is blogpost's project backend. It handle blog and users & authentication.
+This is blogpost's project backend. It handle blog and users & authentication. For frontend application you can visit - https://github.com/sahilofficial671/blogpost
 
 #### Deployment
 ##### Deployed On: AWS via Github Actions
