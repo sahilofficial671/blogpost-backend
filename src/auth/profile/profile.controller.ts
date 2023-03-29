@@ -1,4 +1,5 @@
 import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
+import { HttpStatusCode } from 'axios';
 import { Request, Response } from 'express';
 import { JwtGuard } from 'src/common/guards/jwt.guard';
 import { UserService } from 'src/common/services/user/user.service';
@@ -11,9 +12,11 @@ export class ProfileController {
   @Get()
   @UseGuards(JwtGuard)
   async index(@Req() req: Request, @Res() res: Response){
-    return res.send({
-      status: 'success',
-      user: await this.userService.getUserById(req.user['userId'])
-    });
+    return res
+      .status(HttpStatusCode.Ok)
+      .json({
+        status: 'success',
+        user: await this.userService.getUserById(req.user['userId'])
+      });
   }
 }
