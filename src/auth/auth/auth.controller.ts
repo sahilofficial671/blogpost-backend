@@ -12,7 +12,7 @@ export class AuthController {
       .status(HttpStatusCode.Ok)  
       .json({
         status: 'success',
-        message: 'Session is Valid'
+        message: 'Session is Valid.'
       });
   }
 }
